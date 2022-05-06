@@ -21,8 +21,10 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
     - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v2.5.0
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
       with:
+       target_branch: gh-pages
        build_dir: _site/
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
