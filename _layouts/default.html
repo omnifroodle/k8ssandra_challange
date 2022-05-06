@@ -2,11 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.17e50649.svg" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome!</title>
-    <link rel="stylesheet" href="index.css">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   </head>
   <body class="font-serif ">
     
@@ -21,15 +20,11 @@
             <div class="bg-gray-300 absolute -bottom-4 -left-4 w-8 h-8 rounded-full">&nbsp;</div>
             <div class="bg-gray-300 absolute -bottom-4 -right-4 w-8 h-8 rounded-full">&nbsp;</div>
               <div class="bg-white rounded shadow px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <h1 class="text-3xl md:text-5xl text-red-500 text-center font-semibold mx-auto">
-                  Welcome 
-                </h1>
-                <p class="text-xl md:text-2xl text-red-500 text-center font-semibold mx-auto pb-4">to the World’s First Fully Distributed Scavenger Hunt!</p>
-                <hr/>
-                <p>When the hunt begins directions will appear here to begin the first leg of your journey.</p>
+                {{ content }}
               </div>
           </div>
       </main>
   </div>
   </body>
 </html>
+j

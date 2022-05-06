@@ -1,0 +1,16 @@
+---
+---
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  h1 {
+    @apply text-3xl md:text-5xl text-red-500 font-bold mx-auto;
+  }
+  h2 {
+    @apply text-xl md:text-2xl text-red-500 font-semibold mx-auto;
+  }
+  /* ... */
+}
