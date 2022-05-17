@@ -25,7 +25,41 @@
 
 <hr />
 
-<p>When the game begins directions will appear here to begin the first leg of your journey.</p>
+<p>First, we are going to need a Kubernetes cluster. The easiest way to play this game is with a 3 node Amazon EKS cluster, don’t worry you won’t need it running for too long to find your secret and bring it by the booth.  For expert Kubernetes users, you could run this just about anywhere. Though some strategic alterations to the guide we give would be required…</p>
+
+<p>For the EKS route, your going to want to install <code class="language-plaintext highlighter-rouge">eksctl</code> and set it up.  Head over to <a href="https://eksctl.io">https://eksctl.io</a> and follow their instructions to get things up and running.</p>
+
+<p>Once you have eksctl setup and connected, you’ll need a kubernetes cluster.  This config should help:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">eksctl.io/v1alpha5</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ClusterConfig</span>
+
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">region</span><span class="pi">:</span> <span class="s">us-east-1</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">k8ssandra-demo</span>
+<span class="na">availabilityZones</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">us-east-1a"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">us-east-1b"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">us-east-1c"</span><span class="pi">]</span>
+<span class="na">nodeGroups</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">m5</span>
+    <span class="na">instanceType</span><span class="pi">:</span> <span class="s">m5.xlarge</span>
+    <span class="na">desiredCapacity</span><span class="pi">:</span> <span class="m">3</span>
+    <span class="na">volumeSize</span><span class="pi">:</span> <span class="m">100</span>
+</code></pre></div></div>
+
+<p>then,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eksctl create cluster <span class="nt">-f</span> config.yaml
+</code></pre></div></div>
+
+<p>When that spins up, you’ll need to deploy this container:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl run atw <span class="nt">--image</span><span class="o">=</span>k8ssandra/around-the-world:latest <span class="nt">--port</span><span class="o">=</span>4000
+kubectl port-forward atw 4000:4000
+</code></pre></div></div>
+
+<p>Then connect to it on port 4000 with a web browser for further instructions.</p>
+
+<h2 id="good-luck">Good Luck!</h2>
+
 
               </div>
           </div>

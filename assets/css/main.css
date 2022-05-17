@@ -12,5 +12,11 @@
   h2 {
     @apply text-xl md:text-2xl text-red-500 font-semibold mx-auto;
   }
+  p {
+    @apply m-3;
+  }
+  pre {
+    @apply border-dashed rounded-sm border-2 p-2;
+  }
   /* ... */
 }

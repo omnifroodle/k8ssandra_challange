@@ -411,6 +411,15 @@ Ensure the default browser behavior of the `hidden` attribute.
     line-height: 2rem;
   }
 }
+  p {
+  margin: 0.75rem;
+}
+  pre {
+  border-radius: 0.125rem;
+  border-width: 2px;
+  border-style: dashed;
+  padding: 0.5rem;
+}
   /* ... */
 
 *, ::before, ::after {
